@@ -95,12 +95,23 @@ const followersArray = [];
   paragraphProfile.append(profileAnchor);
 
 //setting of the text content
+containerImg.src = data.avatar_url;
+containerImg.alt = 'Github Profile Image';
+containerTitle.textContent = data.name;
+paragraphUsername.textContent = data.login;
+paragraphLocation.textContent = `Location: ${data.location}`;
+paragraphProfile.textContent = 'Profile: ';
+profileAnchor.href = data.html_url;
+paragraphFollowers.textContent = `Followers: ${data.followers}`;
+paragraphFollowing.textContent =  `Following: ${data.following}`;
+paragraphBio.textContent = `Bio: ${data.bio}`;
 
 
 
   return container;
  }
  const wholeThing  = document.querySelector('.cards');
+
 
 
 
