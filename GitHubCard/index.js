@@ -2,6 +2,10 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios.get('https://api.github.com/users/pinefoot')
+.then (response => {
+  console.log(response);
+})
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -24,7 +28,110 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  {
+  "login": "HuangLiPang",
+    "id": 19566598,
+    "node_id": "MDQ6VXNlcjE5NTY2NTk4",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/19566598?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/HuangLiPang",
+    "html_url": "https://github.com/HuangLiPang",
+    "followers_url": "https://api.github.com/users/HuangLiPang/followers",
+    "following_url": "https://api.github.com/users/HuangLiPang/following{/other_user}",
+    "gists_url": "https://api.github.com/users/HuangLiPang/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/HuangLiPang/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/HuangLiPang/subscriptions",
+    "organizations_url": "https://api.github.com/users/HuangLiPang/orgs",
+    "repos_url": "https://api.github.com/users/HuangLiPang/repos",
+    "events_url": "https://api.github.com/users/HuangLiPang/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/HuangLiPang/received_events",
+    "type": "User",
+    "site_admin": false
+    },
+    {
+      "login": "leachcoding",
+      "id": 42565053,
+      "node_id": "MDQ6VXNlcjQyNTY1MDUz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42565053?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/leachcoding",
+      "html_url": "https://github.com/leachcoding",
+      "followers_url": "https://api.github.com/users/leachcoding/followers",
+      "following_url": "https://api.github.com/users/leachcoding/following{/other_user}",
+      "gists_url": "https://api.github.com/users/leachcoding/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/leachcoding/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/leachcoding/subscriptions",
+      "organizations_url": "https://api.github.com/users/leachcoding/orgs",
+      "repos_url": "https://api.github.com/users/leachcoding/repos",
+      "events_url": "https://api.github.com/users/leachcoding/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/leachcoding/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    {
+      "login": "dortega5185",
+      "id": 16767688,
+      "node_id": "MDQ6VXNlcjE2NzY3Njg4",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16767688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dortega5185",
+      "html_url": "https://github.com/dortega5185",
+      "followers_url": "https://api.github.com/users/dortega5185/followers",
+      "following_url": "https://api.github.com/users/dortega5185/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dortega5185/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dortega5185/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dortega5185/subscriptions",
+      "organizations_url": "https://api.github.com/users/dortega5185/orgs",
+      "repos_url": "https://api.github.com/users/dortega5185/repos",
+      "events_url": "https://api.github.com/users/dortega5185/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dortega5185/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    {
+      "login": "Diddleslip",
+      "id": 52723004,
+      "node_id": "MDQ6VXNlcjUyNzIzMDA0",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/52723004?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Diddleslip",
+      "html_url": "https://github.com/Diddleslip",
+      "followers_url": "https://api.github.com/users/Diddleslip/followers",
+      "following_url": "https://api.github.com/users/Diddleslip/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Diddleslip/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Diddleslip/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Diddleslip/subscriptions",
+      "organizations_url": "https://api.github.com/users/Diddleslip/orgs",
+      "repos_url": "https://api.github.com/users/Diddleslip/repos",
+      "events_url": "https://api.github.com/users/Diddleslip/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Diddleslip/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    {
+      "login": "berachele",
+      "id": 60797556,
+      "node_id": "MDQ6VXNlcjYwNzk3NTU2",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/60797556?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/berachele",
+      "html_url": "https://github.com/berachele",
+      "followers_url": "https://api.github.com/users/berachele/followers",
+      "following_url": "https://api.github.com/users/berachele/following{/other_user}",
+      "gists_url": "https://api.github.com/users/berachele/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/berachele/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/berachele/subscriptions",
+      "organizations_url": "https://api.github.com/users/berachele/orgs",
+      "repos_url": "https://api.github.com/users/berachele/repos",
+      "events_url": "https://api.github.com/users/berachele/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/berachele/received_events",
+      "type": "User",
+      "site_admin": false
+    }
+
+
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
