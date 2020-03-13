@@ -51,6 +51,7 @@ array.forEach(items =>{
      wholeThing.append(newGitProf);
      
   });
+  
 })
   
   
@@ -97,21 +98,19 @@ getThatData(followersArray);
   username.classList.add('username');
   containerTitle.classList.add('name');
 
-
-
-
-
-  //append
-  container.append(containerImg);
-  container.append(divTwo);
-  divTwo.append(containerTitle);
-  divTwo.append(username);
-  divTwo.append(location);
-  divTwo.append(profile);
-  divTwo.append(followers);
-  divTwo.append(following);
-  divTwo.append(bio);
-  profile.append(profileAnchor);
+ //append
+ container.append(containerImg);
+ container.append(divTwo);
+ divTwo.append(containerTitle);
+ divTwo.append(username);
+ divTwo.append(location);
+ divTwo.append(profile);
+ profile.append(profileAnchor);
+ divTwo.append(followers);
+ divTwo.append(following);
+ divTwo.append(bio);
+ //profile.append(profileAnchor);
+ 
 
 //setting of the text content
 containerImg.src = data.avatar_url;
@@ -119,11 +118,20 @@ containerImg.alt = 'Github Profile Image';
 containerTitle.textContent = data.name;
 username.textContent = data.login;
 location.textContent = `Location: ${data.location}`;
-profile.textContent = `Profile: ${data.html_url}`;
-//profileAnchor.setAttribute ('href', data.html_url);
+
+profile.textContent = 'Profile:';
+profileAnchor.setAttribute('href', data.html_url);
 followers.textContent = `Followers: ${data.followers}`;
 following.textContent =  `Following: ${data.following}`;
 bio.textContent = `Bio: ${data.bio}`;
+
+ 
+
+
+//click event for anchor
+//  profile.addEventListener('click', event =>{
+//   window.open('href = data.html_url');
+// })
 
 
 
