@@ -41,7 +41,7 @@ axios.get('https://api.github.com/users/pinefoot')
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['devjaymoe', 'alanblee', 'mrsimpson3000', 'Perezented', 'MathewHeideman', 'berachele'];
+const followersArray = ['devjaymoe', 'alanblee', 'mrsimpson3000', 'Perezented', 'berachele'];
 
 function getThatData (array){
 array.forEach(items =>{
@@ -108,7 +108,6 @@ getThatData(followersArray);
   divTwo.append(username);
   divTwo.append(location);
   divTwo.append(profile);
-  divTwo.append(username);
   divTwo.append(followers);
   divTwo.append(following);
   divTwo.append(bio);
@@ -121,7 +120,7 @@ containerTitle.textContent = data.name;
 username.textContent = data.login;
 location.textContent = `Location: ${data.location}`;
 profile.textContent = `Profile: ${data.html_url}`;
-profileAnchor.setAttribute ('href', data.html_url);
+//profileAnchor.setAttribute ('href', data.html_url);
 followers.textContent = `Followers: ${data.followers}`;
 following.textContent =  `Following: ${data.following}`;
 bio.textContent = `Bio: ${data.bio}`;
@@ -131,14 +130,7 @@ bio.textContent = `Bio: ${data.bio}`;
   return container;
  }
  const wholeThing  = document.querySelector('.cards');
-//  axios.get('https://api.github.com/users/pinefoot')
-//  .then(response =>{
-//    console.log(`this is the response`, response);
-//    cards.append(githubContent(response.data));
-//  })
-//  .catch(error =>{
-//    console.log('something is wrong here', error);
-//  });
+//  
 
 
 
