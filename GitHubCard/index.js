@@ -87,7 +87,7 @@ getThatData(followersArray);
     const username = document.createElement('p');
     const location = document.createElement('p');
     const profile = document.createElement('p');
-    const profileAnchor = document.createElement('a');
+    const anchor = document.createElement('a');
     const followers = document.createElement('p');
     const following = document.createElement('p');
     const bio = document.createElement('p');
@@ -98,18 +98,8 @@ getThatData(followersArray);
   username.classList.add('username');
   containerTitle.classList.add('name');
 
- //append
- container.append(containerImg);
- container.append(divTwo);
- divTwo.append(containerTitle);
- divTwo.append(username);
- divTwo.append(location);
- divTwo.append(profile);
- profile.append(profileAnchor);
- divTwo.append(followers);
- divTwo.append(following);
- divTwo.append(bio);
- //profile.append(profileAnchor);
+ 
+ 
  
 
 //setting of the text content
@@ -119,8 +109,12 @@ containerTitle.textContent = data.name;
 username.textContent = data.login;
 location.textContent = `Location: ${data.location}`;
 
-profile.textContent = 'Profile:';
-profileAnchor.setAttribute('href', data.html_url);
+
+anchor.setAttribute('href', data.html_url);
+anchor.textContent = data.html_url;
+profile.textContent = `Profile: `;
+
+
 followers.textContent = `Followers: ${data.followers}`;
 following.textContent =  `Following: ${data.following}`;
 bio.textContent = `Bio: ${data.bio}`;
@@ -132,7 +126,17 @@ bio.textContent = `Bio: ${data.bio}`;
 //  profile.addEventListener('click', event =>{
 //   window.open('href = data.html_url');
 // })
-
+//append
+container.append(containerImg);
+container.append(divTwo);
+divTwo.append(containerTitle);
+divTwo.append(username);
+divTwo.append(location);
+divTwo.append(profile);
+profile.append(anchor);
+divTwo.append(followers);
+divTwo.append(following);
+divTwo.append(bio);
 
 
   return container;
