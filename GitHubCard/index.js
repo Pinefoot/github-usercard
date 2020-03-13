@@ -2,17 +2,23 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+
 axios.get('https://api.github.com/users/pinefoot')
-.then (response => {
- Object.values(response.data)(items =>{
-    const newGitProf = githubContent(data);
-    cards.append(newGitProf);
+  .then (response => {
+     let newGitProf = githubContent(response.data);
+     wholeThing.append(newGitProf);
+     
   });
+
+
+
+
+  //});
   //console.log(response);
-})
-.catch(error =>{
-  console.log('The data was not returned', error);
-});
+//   .catch(error => {
+//     console.log('The data was not returned', error);
+//  });
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -35,8 +41,22 @@ axios.get('https://api.github.com/users/pinefoot')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['devjaymoe', 'alanblee', 'mrsimpson3000', 'Perezented', 'MathewHeideman', 'berachele'];
 
+function getThatData (array){
+array.forEach(items =>{
+  axios.get(`https://api.github.com/users/${items}`)
+  .then (response => {
+     let newGitProf = githubContent(response.data);
+     wholeThing.append(newGitProf);
+     
+  });
+})
+  
+  
+  }
+
+getThatData(followersArray);
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -63,18 +83,18 @@ const followersArray = [];
     const divTwo = document.createElement('div');
     const containerImg = document.createElement('img');
     const containerTitle = document.createElement('h3');
-    const paragraphUsername = document.createElement('p');
-    const paragraphLocation = document.createElement('p');
-    const paragraphProfile = document.createElement('p');
+    const username = document.createElement('p');
+    const location = document.createElement('p');
+    const profile = document.createElement('p');
     const profileAnchor = document.createElement('a');
-    const paragraphFollowers = document.createElement('p');
-    const paragraphFollowing = document.createElement('p');
-    const paragraphBio = document.createElement('p');
+    const followers = document.createElement('p');
+    const following = document.createElement('p');
+    const bio = document.createElement('p');
 
   //classes
   container.classList.add('card');
   divTwo.classList.add('card-info');
-  paragraphUsername.classList.add('username');
+  username.classList.add('username');
   containerTitle.classList.add('name');
 
 
@@ -85,32 +105,42 @@ const followersArray = [];
   container.append(containerImg);
   container.append(divTwo);
   divTwo.append(containerTitle);
-  divTwo.append(paragraphUsername);
-  divTwo.append(paragraphLocation);
-  divTwo.append(paragraphProfile);
-  divTwo.append(paragraphUsername);
-  divTwo.append(paragraphFollowers);
-  divTwo.append(paragraphFollowing);
-  divTwo.append(paragraphBio);
-  paragraphProfile.append(profileAnchor);
+  divTwo.append(username);
+  divTwo.append(location);
+  divTwo.append(profile);
+  divTwo.append(username);
+  divTwo.append(followers);
+  divTwo.append(following);
+  divTwo.append(bio);
+  profile.append(profileAnchor);
 
 //setting of the text content
 containerImg.src = data.avatar_url;
 containerImg.alt = 'Github Profile Image';
 containerTitle.textContent = data.name;
-paragraphUsername.textContent = data.login;
-paragraphLocation.textContent = `Location: ${data.location}`;
-paragraphProfile.textContent = 'Profile: ';
-profileAnchor.href = data.html_url;
-paragraphFollowers.textContent = `Followers: ${data.followers}`;
-paragraphFollowing.textContent =  `Following: ${data.following}`;
-paragraphBio.textContent = `Bio: ${data.bio}`;
+username.textContent = data.login;
+location.textContent = `Location: ${data.location}`;
+profile.textContent = `Profile: ${data.html_url}`;
+profileAnchor.setAttribute ('href', data.html_url);
+followers.textContent = `Followers: ${data.followers}`;
+following.textContent =  `Following: ${data.following}`;
+bio.textContent = `Bio: ${data.bio}`;
 
 
 
   return container;
  }
  const wholeThing  = document.querySelector('.cards');
+//  axios.get('https://api.github.com/users/pinefoot')
+//  .then(response =>{
+//    console.log(`this is the response`, response);
+//    cards.append(githubContent(response.data));
+//  })
+//  .catch(error =>{
+//    console.log('something is wrong here', error);
+//  });
+
+
 
 
 
@@ -124,106 +154,3 @@ paragraphBio.textContent = `Bio: ${data.bio}`;
   luishrd
   bigknell
 */
-
-
-//potential data.
-// {
-//   "login": "HuangLiPang",
-//     "id": 19566598,
-//     "node_id": "MDQ6VXNlcjE5NTY2NTk4",
-//     "avatar_url": "https://avatars1.githubusercontent.com/u/19566598?v=4",
-//     "gravatar_id": "",
-//     "url": "https://api.github.com/users/HuangLiPang",
-//     "html_url": "https://github.com/HuangLiPang",
-//     "followers_url": "https://api.github.com/users/HuangLiPang/followers",
-//     "following_url": "https://api.github.com/users/HuangLiPang/following{/other_user}",
-//     "gists_url": "https://api.github.com/users/HuangLiPang/gists{/gist_id}",
-//     "starred_url": "https://api.github.com/users/HuangLiPang/starred{/owner}{/repo}",
-//     "subscriptions_url": "https://api.github.com/users/HuangLiPang/subscriptions",
-//     "organizations_url": "https://api.github.com/users/HuangLiPang/orgs",
-//     "repos_url": "https://api.github.com/users/HuangLiPang/repos",
-//     "events_url": "https://api.github.com/users/HuangLiPang/events{/privacy}",
-//     "received_events_url": "https://api.github.com/users/HuangLiPang/received_events",
-//     "type": "User",
-//     "site_admin": false
-//     },
-//     {
-//       "login": "leachcoding",
-//       "id": 42565053,
-//       "node_id": "MDQ6VXNlcjQyNTY1MDUz",
-//       "avatar_url": "https://avatars3.githubusercontent.com/u/42565053?v=4",
-//       "gravatar_id": "",
-//       "url": "https://api.github.com/users/leachcoding",
-//       "html_url": "https://github.com/leachcoding",
-//       "followers_url": "https://api.github.com/users/leachcoding/followers",
-//       "following_url": "https://api.github.com/users/leachcoding/following{/other_user}",
-//       "gists_url": "https://api.github.com/users/leachcoding/gists{/gist_id}",
-//       "starred_url": "https://api.github.com/users/leachcoding/starred{/owner}{/repo}",
-//       "subscriptions_url": "https://api.github.com/users/leachcoding/subscriptions",
-//       "organizations_url": "https://api.github.com/users/leachcoding/orgs",
-//       "repos_url": "https://api.github.com/users/leachcoding/repos",
-//       "events_url": "https://api.github.com/users/leachcoding/events{/privacy}",
-//       "received_events_url": "https://api.github.com/users/leachcoding/received_events",
-//       "type": "User",
-//       "site_admin": false
-//     },
-//     {
-//       "login": "dortega5185",
-//       "id": 16767688,
-//       "node_id": "MDQ6VXNlcjE2NzY3Njg4",
-//       "avatar_url": "https://avatars0.githubusercontent.com/u/16767688?v=4",
-//       "gravatar_id": "",
-//       "url": "https://api.github.com/users/dortega5185",
-//       "html_url": "https://github.com/dortega5185",
-//       "followers_url": "https://api.github.com/users/dortega5185/followers",
-//       "following_url": "https://api.github.com/users/dortega5185/following{/other_user}",
-//       "gists_url": "https://api.github.com/users/dortega5185/gists{/gist_id}",
-//       "starred_url": "https://api.github.com/users/dortega5185/starred{/owner}{/repo}",
-//       "subscriptions_url": "https://api.github.com/users/dortega5185/subscriptions",
-//       "organizations_url": "https://api.github.com/users/dortega5185/orgs",
-//       "repos_url": "https://api.github.com/users/dortega5185/repos",
-//       "events_url": "https://api.github.com/users/dortega5185/events{/privacy}",
-//       "received_events_url": "https://api.github.com/users/dortega5185/received_events",
-//       "type": "User",
-//       "site_admin": false
-//     },
-//     {
-//       "login": "Diddleslip",
-//       "id": 52723004,
-//       "node_id": "MDQ6VXNlcjUyNzIzMDA0",
-//       "avatar_url": "https://avatars1.githubusercontent.com/u/52723004?v=4",
-//       "gravatar_id": "",
-//       "url": "https://api.github.com/users/Diddleslip",
-//       "html_url": "https://github.com/Diddleslip",
-//       "followers_url": "https://api.github.com/users/Diddleslip/followers",
-//       "following_url": "https://api.github.com/users/Diddleslip/following{/other_user}",
-//       "gists_url": "https://api.github.com/users/Diddleslip/gists{/gist_id}",
-//       "starred_url": "https://api.github.com/users/Diddleslip/starred{/owner}{/repo}",
-//       "subscriptions_url": "https://api.github.com/users/Diddleslip/subscriptions",
-//       "organizations_url": "https://api.github.com/users/Diddleslip/orgs",
-//       "repos_url": "https://api.github.com/users/Diddleslip/repos",
-//       "events_url": "https://api.github.com/users/Diddleslip/events{/privacy}",
-//       "received_events_url": "https://api.github.com/users/Diddleslip/received_events",
-//       "type": "User",
-//       "site_admin": false
-//     },
-//     {
-//       "login": "berachele",
-//       "id": 60797556,
-//       "node_id": "MDQ6VXNlcjYwNzk3NTU2",
-//       "avatar_url": "https://avatars3.githubusercontent.com/u/60797556?v=4",
-//       "gravatar_id": "",
-//       "url": "https://api.github.com/users/berachele",
-//       "html_url": "https://github.com/berachele",
-//       "followers_url": "https://api.github.com/users/berachele/followers",
-//       "following_url": "https://api.github.com/users/berachele/following{/other_user}",
-//       "gists_url": "https://api.github.com/users/berachele/gists{/gist_id}",
-//       "starred_url": "https://api.github.com/users/berachele/starred{/owner}{/repo}",
-//       "subscriptions_url": "https://api.github.com/users/berachele/subscriptions",
-//       "organizations_url": "https://api.github.com/users/berachele/orgs",
-//       "repos_url": "https://api.github.com/users/berachele/repos",
-//       "events_url": "https://api.github.com/users/berachele/events{/privacy}",
-//       "received_events_url": "https://api.github.com/users/berachele/received_events",
-//       "type": "User",
-//       "site_admin": false
-//     }
